@@ -10,6 +10,7 @@ import lombok.Data;
 public class User {
 
     @TableField //mybatisplus默认把 id 当成主键，如果主键不是 `id`，那就会报错，所以需要这个注解，来表示那个属性是id
+    //@TableField("uid") //如果实体类id和数据库表id不一样，那可以把数据库表id字段名赋给注解@TableField的value属性
     public Long uid;
 
     public String name;
