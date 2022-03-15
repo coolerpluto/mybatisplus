@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 
-@TableName("t_user")//如果实体类名和数据库表不一样，那就用这个注解进行一下绑定，因为mybatis-plus默认是根据实体类名去找数据库表的
+//@TableName("t_user")//如果实体类名和数据库表不一样，那就用这个注解进行一下绑定，因为mybatis-plus默认是根据实体类名去找数据库表的
 @Data
 public class User {
 
