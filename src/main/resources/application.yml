@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mybatis_plus?characterEncoding=utf-8&userSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: root
+mybatis-plus:
+  configuration:
+#    用来在控制台打印mybatis-plus执行的sql语句
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#mybatis-plus全局配置
+  global-config:
+    db-config:
+#      table-prefix为了自动在实体类名前加前缀，保证和数据库表名一致的，这个是全局配置，而@TableName是只能一个一个加在实体类上
+      table-prefix: t_
