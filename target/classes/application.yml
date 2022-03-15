@@ -10,7 +10,7 @@ mybatis-plus:
 #    �����ڿ���̨��ӡmybatis-plusִ�е�sql���
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 #mybatis-plusȫ������
-  global-config:
-    db-config:
+#  global-config:
+#    db-config:
 #      table-prefixΪ���Զ���ʵ������ǰ��ǰ׺����֤�����ݿ����һ�µģ������ȫ�����ã���@TableName��ֻ��һ��һ������ʵ������
-      table-prefix: t_
+#      table-prefix: t_

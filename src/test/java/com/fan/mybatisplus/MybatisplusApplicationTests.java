@@ -32,9 +32,8 @@ class MybatisplusApplicationTests {
         user.setName("zhangsan");
         user.setAge(17);
         user.setEmail("zhangsan@qq.com");
-        user.setUid(100L);
         int count = userMapper.insert(user);
-        System.out.println("插入数据的id："+user.getUid());
+        System.out.println("插入数据的id："+user.getId());
     }
 
 //    测试根据id删除
