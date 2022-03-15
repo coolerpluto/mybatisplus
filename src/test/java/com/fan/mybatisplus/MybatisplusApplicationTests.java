@@ -21,6 +21,8 @@ class MybatisplusApplicationTests {
     @Test
     void testSelectList() {
 //        通过条件构造器查询一个list集合，如果没有条件，那就填入null，查询所有
+//        在使用逻辑删除后，查询数据就是查询is_deleted字段未0的数据
+//        Preparing: SELECT uid AS id,user_name AS name,age,email,is_deleted FROM t_user WHERE is_deleted=0
         List<User> users = userMapper.selectList(null);
         users.forEach(System.out::println);
     }
@@ -60,6 +62,8 @@ class MybatisplusApplicationTests {
 //        因为数据库表的id使用的bigint类型，所以要用Long
 //        sql语句：Preparing: DELETE FROM user WHERE id IN ( ? , ? )
         List<Long> ids = Arrays.asList(2L, 3L);
+//        在使用逻辑删除后，删除数据就是把is_deleted字段值改为1
+//        Preparing: UPDATE t_user SET is_deleted=1 WHERE uid IN ( ? , ? ) AND is_deleted=0
         int num = userMapper.deleteBatchIds(ids);
         System.out.println(num);
     }
@@ -70,4 +74,6 @@ class MybatisplusApplicationTests {
         Map<String, Object> map = userMapper.selectMapSelfDefined(4L);
         System.out.println(map);
     }
+
+
 }

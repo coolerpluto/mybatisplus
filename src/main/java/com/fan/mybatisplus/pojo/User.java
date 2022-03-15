@@ -1,9 +1,6 @@
 package com.fan.mybatisplus.pojo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 
@@ -18,9 +15,15 @@ public class User {
 //    的主键就是自增的了，就不遵循雪花算法了
     public Long id;
 
+
+//    指定属性所对应的表字段名称
+    @TableField("user_name")
     public String name;
 
     public Integer age;
 
     public String email;
+
+    @TableLogic
+    public Integer isDeleted;//逻辑删除：0代表未删除，1代表已删除，测试类MybatisplusApplicationTests里有示例
 }
