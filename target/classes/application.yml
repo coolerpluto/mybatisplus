@@ -7,13 +7,16 @@ spring:
     password: root
 mybatis-plus:
   configuration:
-#    �����ڿ���̨��ӡmybatis-plusִ�е�sql���
+#    用来在控制台打印mybatis-plus执行的sql语句
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-#mybatis-plusȫ������
+#mybatis-plus全局配置
   global-config:
     db-config:
-#      table-prefixΪ���Զ���ʵ������ǰ��ǰ׺����֤�����ݿ����һ�µģ������ȫ�����ã���@TableName��ֻ��һ��һ������ʵ������
+#      table-prefix为了自动在实体类名前加前缀，保证和数据库表名一致的，这个是全局配置，而@TableName是只能一个一个加在实体类上
       table-prefix: t_
-#      �������������ɲ��ԣ����д������ã��Ǿ���Ĭ��ʹ��ѩ���㷨�������������ó�auto�����ʹ�����ݿ���������ԣ�ע�⣬��������ȷ�����ݿ�������id������
-      #������Ч
+#      设置主键的生成策略，如果写这个配置，那就是默认使用雪花算法生成主键。设置成auto则代表使用数据库的自增策略，注意，该类型请确保数据库设置了id自增，
+      #否则无效
       id-type: auto
+
+  type-aliases-package: com.fan.mybatisplus.pojo
+  type-enums-package: com.fan.mybatisplus.myEnum

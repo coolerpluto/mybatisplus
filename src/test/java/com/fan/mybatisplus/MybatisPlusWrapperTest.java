@@ -1,7 +1,9 @@
 package com.fan.mybatisplus;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.fan.mybatisplus.mapper.UserMapper;
 import com.fan.mybatisplus.pojo.User;
 import org.junit.jupiter.api.Test;
@@ -12,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @SpringBootTest
-public class MybatisWrapperTest {
+public class MybatisPlusWrapperTest {
 
     @Autowired
     UserMapper userMapper;
@@ -106,5 +108,37 @@ public class MybatisWrapperTest {
 //        因为update放条件构造器必须要设置个实体，所以就放null
         int update = userMapper.update(null, userUpdateWrapper);
         System.out.println("update:"+update);
+    }
+
+
+//    条件构造器的方法参数都会有一个布尔值判断，通常用于判断条件是否添加，比如如果姓名为空，那就不增加判断姓名是否包含a的条件
+//    节省了不用if语句判断姓名是否为空然后再增加这个条件的繁琐步骤
+    @Test
+    void testCondition(){
+        String userName = "a";
+        Integer ageBegin = null;
+        Integer ageEnd = 30;
+        QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
+        userQueryWrapper.like(StringUtils.isNotBlank(userName), "user_name", userName)
+                .ge(ageBegin!=null, "age", ageBegin)
+                .le(ageEnd!=null, "age", ageEnd);
+        List<User> users = userMapper.selectList(userQueryWrapper);
+        users.forEach(System.out::println);
+    }
+
+
+
+//    LambdaQueryWrapper可以不用手写数据库表字段名，直接调用实体类get方法来获取属性所对应的字段名
+    @Test
+    void testLambdaQueryWrapper(){
+        String userName = "a";
+        Integer ageBegin = null;
+        Integer ageEnd = 30;
+        LambdaQueryWrapper<User> userLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        userLambdaQueryWrapper.like(StringUtils.isNotBlank(userName), User::getName, userName)
+                .ge(ageBegin!=null, User::getAge, ageBegin)
+                .le(ageEnd!=null, User::getAge, ageEnd);
+        List<User> users = userMapper.selectList(userLambdaQueryWrapper);
+        users.forEach(System.out::println);
     }
 }

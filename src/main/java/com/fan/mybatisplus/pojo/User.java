@@ -1,6 +1,7 @@
 package com.fan.mybatisplus.pojo;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.fan.mybatisplus.myEnum.GenderEnum;
 import lombok.Data;
 
 
@@ -13,17 +14,19 @@ public class User {
     @TableId(value = "uid", type = IdType.AUTO)//mybatisplus的主键生成默认是遵循雪花算法，就随机生成一串数字。
 //如果不设置type属性，那么无论数据库表的主键是否设置自增，表的主键值都是雪花算法生成的数字。加上这个type=IdType.AUTO，那么数据库
 //    的主键就是自增的了，就不遵循雪花算法了
-    public Long id;
+    private Long id;
 
 
 //    指定属性所对应的表字段名称
     @TableField("user_name")
-    public String name;
+    private String name;
 
-    public Integer age;
+    private Integer age;
 
-    public String email;
+    private String email;
 
     @TableLogic
-    public Integer isDeleted;//逻辑删除：0代表未删除，1代表已删除，测试类MybatisplusApplicationTests里有示例
+    private Integer isDeleted;//逻辑删除：0代表未删除，1代表已删除，测试类MybatisplusApplicationTests里有示例
+
+    private GenderEnum gender;
 }

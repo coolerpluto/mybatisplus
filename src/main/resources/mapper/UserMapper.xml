@@ -6,4 +6,9 @@
     <select id="selectMapSelfDefined" resultType="map">
         select id, name, age, email from user where id = #{id}
     </select>
+
+<!--    Page<User> selectPageUseSql(@Param("page") Page<User> page, @Param("age") Integer age);-->
+    <select id="selectPageUseSql" resultType="User">
+        select uid, user_name, age from t_user where age > #{age}
+    </select>
 </mapper>
