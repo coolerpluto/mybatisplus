@@ -17,6 +17,7 @@ mybatis-plus:
 #      设置主键的生成策略，如果写这个配置，那就是默认使用雪花算法生成主键。设置成auto则代表使用数据库的自增策略，注意，该类型请确保数据库设置了id自增，
       #否则无效
       id-type: auto
-
+#实体类别名包扫描
   type-aliases-package: com.fan.mybatisplus.pojo
+#枚举包扫描
   type-enums-package: com.fan.mybatisplus.myEnum
