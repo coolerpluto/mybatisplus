@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.generator.config.OutputFile;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
 import java.util.Collections;
-//需要两个依赖
+//需要两个依赖：freemarker和mybatis-plus-generator
 //代码生成器
 public class FastAutoGeneratorTest {
     public static void main(String[] args) {
